@@ -18,10 +18,28 @@ const DATA = {
             { name: "Sam Alper", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20270x436.jpg", initials: "GW" },
             { name: "Guangning Wang", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20406x602.jpg", initials: "PF" },
             { name: "Priscilla Figueroa", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20794x1280.jpg", initials: "SA" },
-            { name: "Joy Corley", role: "Lab Manager", img: null, initials: "JC" },
         ],
-        prevPhDs: ["Deeptha Vasudevan","Yen-Chyi Liu","Jennifer Cheng","David Hutcheson","Yuanyuan Xie","Adam McPherson","Junji Lin","Rob Duncan","Hyungseok Kim","Xu Wang","Jennifer Bonner","Lisa BrIona","Eric Veien","Ji Eun Lee"],
-        prevPostdocs: ["Hideo Otsuna","Suzanna Gribble"]
+        prevPhDs: [
+            "Deeptha Vasudevan",
+            "Jennifer Cheng",
+            "Yuanyuan Xie",
+            "Adam McPherson",
+            "Rob Duncan",
+            "Xu Wang",
+            "Lisa Brlona",
+            "Eric Veien",
+            "Suzanna Gribble",
+            "Ji Eun Lee"
+        ],
+
+        prevPostdocs: [
+            "Yen-Chyi Liu",
+            "David Hutcheson",
+            "Hideo Otsuna",
+            "Junji Lin",
+            "Hyungseok Kim",
+            "Jennifer Bonner"
+        ]
     },
 
     publications: [
