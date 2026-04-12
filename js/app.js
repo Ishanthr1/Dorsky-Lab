@@ -15,9 +15,9 @@ const DATA = {
             bio: "Dr. Dorsky's research focuses on the role of Wnt signaling in CNS neurogenesis, using zebrafish to understand how neurons are generated, specified, and integrated into functional circuits that control behavior."
         },
         current: [
-            { name: "Guangning Wang", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20270x436.jpg", initials: "GW" },
-            { name: "Priscilla Figueroa", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20406x602.jpg", initials: "PF" },
-            { name: "Sam Alper", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20794x1280.jpg", initials: "SA" },
+            { name: "Sam Alper", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20270x436.jpg", initials: "GW" },
+            { name: "Guangning Wang", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20406x602.jpg", initials: "PF" },
+            { name: "Priscilla Figueroa", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20794x1280.jpg", initials: "SA" },
             { name: "Joy Corley", role: "Lab Manager", img: null, initials: "JC" },
         ],
         prevPhDs: ["Deeptha Vasudevan","Yen-Chyi Liu","Jennifer Cheng","David Hutcheson","Yuanyuan Xie","Adam McPherson","Junji Lin","Rob Duncan","Hyungseok Kim","Xu Wang","Jennifer Bonner","Lisa BrIona","Eric Veien","Ji Eun Lee"],
