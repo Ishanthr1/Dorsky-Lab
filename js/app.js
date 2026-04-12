@@ -8,7 +8,7 @@ const DATA = {
         pi: {
             name: "Richard Dorsky",
             role: "Principal Investigator",
-            title: "Professor · Department of Neurobiology & Anatomy",
+            title: "Professor · Department of Neurobiology",
             email: "richard.dorsky@neuro.utah.edu",
             img: "https://www.neuro.utah.edu/labs/dorsky/images/dorsky%20photo%20small.jpg",
             initials: "RD",
@@ -518,7 +518,7 @@ function renderContact() {
         <div style="margin-bottom:32px">
           <div class="addr-label">Mailing Address</div>
           <div class="addr-text">
-            Department of Neurobiology and Anatomy<br/>
+            Department of Neurobiology<br/>
             20 South 2030 East<br/>
             Bldg. 570 BPRB, Rm. 490E<br/>
             Salt Lake City, Utah 84112
@@ -546,7 +546,7 @@ function renderContact() {
           </p>
           <a href="https://bioscience.utah.edu" target="_blank" class="grad-link">Molecular Biology Program →</a>
           <a href="http://neuroscience.med.utah.edu" target="_blank" class="grad-link">Neuroscience Graduate Program →</a>
-          <a href="https://medicine.utah.edu/neurobiology" target="_blank" class="grad-link">Department of Neurobiology & Anatomy →</a>
+          <a href="https://medicine.utah.edu/neurobiology" target="_blank" class="grad-link">Department of Neurobiology →</a>
         </div>
       </div>
       <div class="contact-map-wrap">
@@ -568,7 +568,7 @@ function renderNav(activePage) {
         <div class="nav-title-block">
           <span class="nav-site-title" onclick="navigate('Home')">Dorsky Lab</span>
           <span class="nav-title-pipe">|</span>
-          <span class="nav-site-subtitle">Department of Neurobiology &amp; Anatomy</span>
+          <span class="nav-site-subtitle">Department of Neurobiology </span>
         </div>
         <button class="nav-mobile-toggle" onclick="this.closest('header').querySelector('.nav-bottom').style.display = this.closest('header').querySelector('.nav-bottom').style.display === 'flex' ? 'none' : 'flex'">☰</button>
       </div>
@@ -600,7 +600,7 @@ function renderFooter() {
         </div>
         <div>
           <div class="footer-col-title">University</div>
-          <a href="https://medicine.utah.edu/neurobiology" target="_blank" class="footer-link">Dept. of Neurobiology & Anatomy</a>
+          <a href="https://medicine.utah.edu/neurobiology" target="_blank" class="footer-link">Dept. of Neurobiology</a>
           <a href="http://neuroscience.med.utah.edu" target="_blank" class="footer-link">Neuroscience Graduate Program</a>
           <a href="https://bioscience.utah.edu" target="_blank" class="footer-link">Molecular Biology Program</a>
         </div>
