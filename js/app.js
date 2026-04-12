@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
    DORSKY LAB — App Logic
-   University of Utah Neurobiology
 ═══════════════════════════════════════════════════════════════ */
 
 /* ── DATA ── */
@@ -205,7 +204,7 @@ function initMap() {
     L.divIcon({ html: markerHtml, className: '', iconSize: [40, 40], iconAnchor: [20, 20] });
     const icon = L.divIcon({ html: markerHtml, className: '', iconSize: [40, 40], iconAnchor: [20, 20] });
     L.marker(LAB, { icon }).addTo(map)
-        .bindPopup('<b style="font-size:12px">Dorsky Lab · BPRB</b><br><span style="font-size:11px">University of Utah</span>');
+        .bindPopup('<b style="font-size:12px">Dorsky Lab · BPRB</b>');
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 }
 
@@ -520,7 +519,6 @@ function renderContact() {
           <div class="addr-label">Mailing Address</div>
           <div class="addr-text">
             Department of Neurobiology and Anatomy<br/>
-            University of Utah<br/>
             20 South 2030 East<br/>
             Bldg. 570 BPRB, Rm. 490E<br/>
             Salt Lake City, Utah 84112
@@ -530,7 +528,6 @@ function renderContact() {
         <div style="margin-bottom:32px">
           <div class="addr-label">Shipping Address (FedEx)</div>
           <div class="addr-text">
-            University of Utah<br/>
             1795 E. South Campus Drive<br/>
             BPRB Room #456<br/>
             Salt Lake City, UT 84112
@@ -589,7 +586,6 @@ function renderFooter() {
       <div class="footer-top">
         <div>
           <div class="footer-brand-name">Dorsky<span>Lab</span></div>
-          <div class="footer-brand-sub">University of Utah</div>
           <div class="footer-brand-desc">
             Investigating Wnt-mediated CNS neurogenesis using zebrafish as a model organism.
           </div>
@@ -607,7 +603,6 @@ function renderFooter() {
           <a href="https://medicine.utah.edu/neurobiology" target="_blank" class="footer-link">Dept. of Neurobiology & Anatomy</a>
           <a href="http://neuroscience.med.utah.edu" target="_blank" class="footer-link">Neuroscience Graduate Program</a>
           <a href="https://bioscience.utah.edu" target="_blank" class="footer-link">Molecular Biology Program</a>
-          <a href="https://www.utah.edu" target="_blank" class="footer-link">University of Utah</a>
         </div>
       </div>
     </footer>`;
