@@ -584,7 +584,9 @@ function renderNav(activePage) {
     <header class="site-header">
       <div class="nav-top">
         <div class="nav-title-block">
-          <span class="nav-site-title" onclick="navigate('Home')">Dorsky Lab</span>
+          <div class="nav-site-title" onclick="navigate('Home')">
+               Dorsky<span style="color: var(--utah-red);">Lab</span>
+          </div>
           <span class="nav-title-pipe">|</span>
           <span class="nav-site-subtitle">Department of Neurobiology </span>
         </div>

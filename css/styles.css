@@ -89,8 +89,8 @@ img { max-width: 100%; display: block; }
     display: flex; align-items: baseline; gap: 14px; flex: 1;
 }
 .nav-site-title {
-    font-family: var(--sans); font-size: 1.05rem; font-weight: 700;
-    letter-spacing: 0.04em; text-transform: uppercase;
+    font-family: var(--serif); font-size: 1.5rem; font-weight: 600;
+    letter-spacing: 0em; text-transform: none;
     color: var(--white); line-height: 1;
     cursor: pointer;
 }
@@ -461,7 +461,7 @@ img { max-width: 100%; display: block; }
 /* Members grid */
 .members-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 2px; background: var(--border);
+    gap: 2px; background: var(--white);
 }
 .member-card { background: var(--white); overflow: hidden; }
 .member-photo-wrap {
