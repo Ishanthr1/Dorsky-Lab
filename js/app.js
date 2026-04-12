@@ -252,8 +252,8 @@ function renderHome() {
       <div class="hero-left">
         <div class="hero-eyebrow">Dorsky Lab · Est. 2001</div>
         <h1 class="hero-title">
-          <em>Wnt</em><br/>
-          <strong>Signaling</strong><br/>
+          <em>Wnt</em>
+          Signaling
           & Neurogenesis
         </h1>
         <p class="hero-body">

@@ -178,6 +178,7 @@ img { max-width: 100%; display: block; }
     font-size: clamp(3rem, 5.5vw, 5.5rem);
     font-weight: 300; line-height: 1.0; letter-spacing: -0.02em;
     color: var(--white);
+
     margin-bottom: 32px;
     animation: slideUp 0.8s var(--ease) 0.25s both;
 }
@@ -206,7 +207,7 @@ img { max-width: 100%; display: block; }
 .hero-cta:hover .hero-cta-arrow { transform: translateX(6px); }
 
 /* Hero right: WebGL canvas */
-#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%;}
 
 /* Hero stats */
 .hero-stats {
