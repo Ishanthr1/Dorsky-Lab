@@ -21,14 +21,21 @@
 </head>
 <body>
 
+<!-- Skip to main content link (Keyboard Accessibility — WCAG 2.4.1) -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <!-- Navigation (injected by JS) -->
-<div id="nav-container"></div>
+<div id="nav-container" role="banner"></div>
 
 <!-- Page Content (injected by JS) -->
-<main id="page-container"></main>
+<!-- role="main" and id="main" allow skip link to work -->
+<main id="main" id="page-container" tabindex="-1"></main>
 
 <!-- Footer (injected by JS) -->
 <div id="footer-container"></div>
+
+<!-- Live region for announcing page navigation to screen readers -->
+<div id="page-announcer" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 
 <!-- App Script -->
 <script src="js/app.js"></script>
