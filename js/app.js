@@ -356,7 +356,7 @@ function renderHome() {
         { n: "03", t: "Regeneration", b: "How does Wnt/Tcf-dependent neurogenesis contribute to regeneration and behavior recovery?" },
     ].map((c, i) => `
             <article class="pillar reveal" role="listitem" style="transition-delay:${i * 120}ms">
-              <div class="pillar-number" aria-hidden="true">${c.n}</div>
+              <div class="pillar-number" aria-hidden="true" data-n="${c.n}"></div>
               <h3 class="pillar-title">${c.t}</h3>
               <p class="pillar-body">${c.b}</p>
             </article>`).join('')}

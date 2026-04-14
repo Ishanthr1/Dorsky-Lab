@@ -398,11 +398,19 @@ button:focus-visible,
     transition: border-color 0.3s, background 0.3s;
 }
 .pillar:hover { border-bottom-color: var(--utah-red); background: var(--bg-2); }
+/* AFTER */
 .pillar-number {
     font-family: var(--serif); font-size: 4rem; font-weight: 300;
-    color: var(--utah-red); opacity: 0.15; line-height: 1;
-    margin-bottom: 16px;
-    /* aria-hidden in JS — decorative number */
+    line-height: 1; margin-bottom: 16px;
+    color: transparent;
+    position: relative;
+}
+.pillar-number::before {
+    content: attr(data-n);
+    position: absolute;
+    color: var(--utah-red);
+    opacity: 0.15;
+    pointer-events: none;
 }
 .pillar-title {
     font-family: var(--serif); font-size: 1.3rem; font-weight: 600;
