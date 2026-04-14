@@ -656,7 +656,7 @@ function renderNav(activePage) {
         <div class="nav-title-block">
           <button class="nav-site-title" onclick="navigate('Home')" type="button"
                   aria-label="Dorsky Lab — go to home page">
-            Dorsky<span style="color: var(--utah-red);" aria-hidden="true">Lab</span>
+            Dorsky<span style="color: #d42020;" aria-hidden="true">Lab</span>
           </button>
           <span class="nav-title-pipe" aria-hidden="true">|</span>
           <span class="nav-site-subtitle">Department of Neurobiology</span>

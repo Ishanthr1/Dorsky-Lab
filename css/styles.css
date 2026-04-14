@@ -806,7 +806,7 @@ button:focus-visible,
 .footer-brand-desc { font-size: 0.82rem; line-height: 1.8; color: rgba(255,255,255,0.75); }
 .footer-col-title {
     font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--utah-red); margin-bottom: 20px;
+    text-transform: uppercase; color: #FF6B6B; margin-bottom: 20px;
 }
 /* Footer links — <a> tags for proper semantics */
 .footer-link {
