@@ -1,17 +1,16 @@
 /* ═══════════════════════════════════════════════════════════════
    DORSKY LAB — App Logic
-   WCAG 2.1 AA Compliant — U of U Web Essentials
-   Changes:
-     - Semantic HTML throughout (<header>,<nav>,<main>,<footer>,<article>,<section>)
-     - All interactive elements use proper <a> or <button> tags with labels
-     - aria-label, aria-current, aria-live, aria-hidden, aria-pressed added
-     - Skip link target (#main) supported
-     - Keyboard-navigable mobile menu with aria-expanded
-     - Decorative images/elements get aria-hidden="true"
-     - Color not used alone to convey info (filter buttons use aria-pressed)
-     - External links get rel="noopener noreferrer" + visually hidden "(opens in new tab)"
-     - Focus management on page navigation
-     - prefers-reduced-motion respected by CSS; canvas paused via JS
+   WCAG 2.1 AA Compliant
+   - Semantic HTML throughout (<header>,<nav>,<main>,<footer>,<article>,<section>)
+   - All interactive elements use proper <a> or <button> tags with labels
+   - aria-label, aria-current, aria-live, aria-hidden, aria-pressed added
+   - Skip link target (#main) supported
+   - Keyboard-navigable mobile menu with aria-expanded
+   - Decorative images/elements get aria-hidden="true"
+   - Color not used alone to convey info (filter buttons use aria-pressed)
+   - External links get rel="noopener noreferrer" + visually hidden "(opens in new tab)"
+   - Focus management on page navigation
+   - prefers-reduced-motion respected by CSS; canvas paused via JS
 ═══════════════════════════════════════════════════════════════ */
 
 /* ── DATA ── */
@@ -84,7 +83,6 @@ function initHeroCanvas() {
     const canvas = document.getElementById('hero-canvas');
     if (!canvas || !window.THREE) return;
 
-    // If user prefers reduced motion, don't run animation (Designer §5)
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         canvas.style.display = 'none';
         return;
@@ -243,10 +241,8 @@ function initMap() {
 
 /* ═══════════════════════════════════════════════════════════════
    INTERSECTION OBSERVER — animate-on-scroll
-   Skipped when prefers-reduced-motion (handled in CSS)
 ═══════════════════════════════════════════════════════════════ */
 function setupReveal() {
-    // If reduced motion, immediately show all — CSS handles the opacity
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.querySelectorAll('.reveal, .rq-item, .pub-card, .research-area-card, .pi-card')
             .forEach(el => el.classList.add('visible'));
@@ -267,8 +263,6 @@ function setupReveal() {
 
 /* ═══════════════════════════════════════════════════════════════
    BREADCRUMB
-   Uses <nav aria-label="Breadcrumb"> + <ol> for proper semantics
-   (Developer §1 Semantic HTML)
 ═══════════════════════════════════════════════════════════════ */
 function renderBreadcrumb(pageName) {
     if (pageName === 'Home') return '';
@@ -288,7 +282,6 @@ function renderBreadcrumb(pageName) {
 
 /* ═══════════════════════════════════════════════════════════════
    EXTERNAL LINK HELPER
-   Adds visually-hidden "(opens in new tab)" for screen readers
 ═══════════════════════════════════════════════════════════════ */
 function extLink(href, cls, text) {
     return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="${cls}">${text}<span class="sr-only"> (opens in new tab)</span></a>`;
@@ -300,12 +293,9 @@ function extLink(href, cls, text) {
 
 function renderHome() {
     return `
-    <!-- HERO — uses <section> semantic element -->
     <section class="hero" aria-label="Lab introduction">
       <div class="hero-left">
-        <!-- Decorative eyebrow label — not a heading -->
         <p class="hero-eyebrow" aria-hidden="true">Dorsky Lab · Est. 2001</p>
-        <!-- h1: one per page, clearly labels page topic -->
         <h1 class="hero-title">
           <em>Wnt</em>
           Signaling
@@ -315,19 +305,16 @@ function renderHome() {
           Decoding how Wnt-dependent neurons establish, modify, and restore
           behavior — using zebrafish as a powerful genetic model system.
         </p>
-        <!-- Button with clear label — not a div/span -->
         <button class="hero-cta" onclick="navigate('Research')" type="button">
           Explore Research
           <span class="hero-cta-arrow" aria-hidden="true">→</span>
         </button>
       </div>
       <div class="hero-right" aria-hidden="true">
-        <!-- Canvas is purely decorative — aria-hidden prevents AT reading it -->
         <canvas id="hero-canvas" aria-hidden="true"></canvas>
       </div>
     </section>
 
-    <!-- STAT BAR — uses <ul> list semantics for stats -->
     <div class="hero-stats reveal" role="list" aria-label="Lab statistics">
       <div class="hero-stat" role="listitem">
         <div class="hero-stat-num" aria-label="3">3</div>
@@ -347,7 +334,6 @@ function renderHome() {
       </div>
     </div>
 
-    <!-- ABOUT SECTION -->
     <section class="section" aria-labelledby="about-heading">
       <div class="section-inner">
         <div class="reveal">
@@ -370,7 +356,6 @@ function renderHome() {
         { n: "03", t: "Regeneration", b: "How does Wnt/Tcf-dependent neurogenesis contribute to regeneration and behavior recovery?" },
     ].map((c, i) => `
             <article class="pillar reveal" role="listitem" style="transition-delay:${i * 120}ms">
-              <!-- Decorative number — aria-hidden since heading provides the label -->
               <div class="pillar-number" aria-hidden="true">${c.n}</div>
               <h3 class="pillar-title">${c.t}</h3>
               <p class="pillar-body">${c.b}</p>
@@ -379,14 +364,12 @@ function renderHome() {
       </div>
     </section>
 
-    <!-- RESEARCH PREVIEW -->
     <section class="research-preview" aria-label="Research areas overview">
       ${DATA.research.areas.map((a, i) => `
         <article class="research-preview-item reveal" style="transition-delay:${i * 150}ms">
           <div class="rp-tag">${a.tag}</div>
           <h2 class="rp-title">${a.title}</h2>
           <p class="rp-body">${a.body.substring(0, 200)}…</p>
-          <!-- Using a button for JS navigation — proper interactive element -->
           <button class="rp-link" onclick="navigate('Research')" type="button">
             Learn More <span aria-hidden="true">→</span>
             <span class="sr-only">about ${a.title}</span>
@@ -410,7 +393,6 @@ function renderResearch() {
     <section class="rq-list section" style="padding-top:72px;padding-bottom:0" aria-label="Research questions">
       ${DATA.research.questions.map((q, i) => `
         <article class="rq-item" style="transition-delay:${i * 100}ms">
-          <!-- Decorative numeral — screen readers see the heading instead -->
           <div class="rq-num" aria-hidden="true">${String(i+1).padStart(2,'0')}</div>
           <div>
             <p class="rq-label">${q.label}</p>
@@ -459,10 +441,8 @@ function renderMembers() {
 
         <article class="pi-card" aria-label="Principal Investigator profile">
           <div class="pi-photo-wrap">
-            <!-- Meaningful alt text for PI photo -->
             <img src="${pi.img}" alt="Portrait of ${pi.name}, ${pi.role}"
                  onerror="this.style.display='none';this.parentElement.style.background='var(--bg-dark-2)'"/>
-            <!-- Decorative gradient overlay — hidden from AT -->
             <div class="pi-photo-overlay" aria-hidden="true"></div>
           </div>
           <div class="pi-info">
@@ -484,7 +464,6 @@ function renderMembers() {
         ? `<img src="${m.img}" alt="Portrait of ${m.name}"
                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>`
         : ''}
-                  <!-- Placeholder initials — aria-hidden since name is in member-name -->
                   <div class="member-placeholder" style="display:${m.img ? 'none' : 'flex'}" aria-hidden="true">
                     <span class="member-initials">${m.initials}</span>
                   </div>
@@ -535,7 +514,6 @@ function renderPublications() {
     <section class="section" aria-labelledby="pubs-heading">
       <div class="section-inner">
         <h2 id="pubs-heading" class="sr-only">Publication list</h2>
-        <!-- Filter group — role="group" + aria-label, buttons use aria-pressed -->
         <div class="pub-filters" role="group" aria-label="Filter publications by topic">
           <button class="pub-filter active" type="button" aria-pressed="true"
                   onclick="filterPubs('all', this)">All Publications</button>
@@ -545,7 +523,6 @@ function renderPublications() {
                   onclick="filterPubs('hypothalamus', this)">Hypothalamus</button>
         </div>
 
-        <!-- Live region: announces filter changes to screen readers -->
         <div aria-live="polite" aria-atomic="true" class="sr-only" id="pub-status"></div>
 
         <ul id="pub-list" style="list-style:none;padding:0;">
@@ -580,7 +557,6 @@ function getPubTopic(pub) {
 }
 
 function filterPubs(topic, btn) {
-    // Update aria-pressed for all filter buttons (not color alone — Developer §4)
     document.querySelectorAll('.pub-filter').forEach(b => {
         b.classList.remove('active');
         b.setAttribute('aria-pressed', 'false');
@@ -596,7 +572,6 @@ function filterPubs(topic, btn) {
         if (show) visibleCount++;
     });
 
-    // Announce result to screen readers via live region
     const status = document.getElementById('pub-status');
     if (status) {
         const label = btn.textContent.replace('(opens in new tab)', '').trim();
@@ -659,7 +634,6 @@ function renderContact() {
         </nav>
       </section>
 
-      <!-- Map: provide a text fallback since maps are not accessible alone -->
       <div class="contact-map-wrap">
         <div id="leaflet-map"
              role="application"
@@ -672,8 +646,6 @@ function renderContact() {
 
 /* ═══════════════════════════════════════════════════════════════
    NAVIGATION & ROUTER
-   Uses <header> + <nav> semantic HTML (Developer §1)
-   Mobile toggle: aria-expanded, aria-controls
 ═══════════════════════════════════════════════════════════════ */
 function renderNav(activePage) {
     const pages = ['Home', 'Research', 'Members', 'Publications', 'Contact'];
@@ -682,16 +654,13 @@ function renderNav(activePage) {
     <header class="site-header">
       <div class="nav-top">
         <div class="nav-title-block">
-          <!-- Site title as a link/button — not a div with onclick -->
           <button class="nav-site-title" onclick="navigate('Home')" type="button"
                   aria-label="Dorsky Lab — go to home page">
             Dorsky<span style="color: var(--utah-red);" aria-hidden="true">Lab</span>
           </button>
-          <!-- Decorative separator — hidden from AT -->
           <span class="nav-title-pipe" aria-hidden="true">|</span>
           <span class="nav-site-subtitle">Department of Neurobiology</span>
         </div>
-        <!-- Mobile toggle: aria-expanded + aria-controls -->
         <button class="nav-mobile-toggle" type="button"
                 aria-label="Toggle navigation menu"
                 aria-expanded="false"
@@ -700,7 +669,6 @@ function renderNav(activePage) {
           <span aria-hidden="true">☰</span>
         </button>
       </div>
-      <!-- nav: semantic landmark for primary navigation -->
       <nav aria-label="Primary navigation" id="nav-menu" class="nav-bottom">
         ${pages.map(p => `
           <a class="nav-link${activePage === p ? ' active' : ''}"
@@ -723,7 +691,6 @@ function renderFooter() {
             Investigating Wnt-mediated CNS neurogenesis using zebrafish as a model organism.
           </p>
         </div>
-        <!-- Footer nav — semantic nav landmark -->
         <nav aria-label="Footer navigation">
           <p class="footer-col-title">Navigation</p>
           <a class="footer-link" href="#" onclick="event.preventDefault(); navigate('Home')">Home</a>
@@ -732,22 +699,21 @@ function renderFooter() {
           <a class="footer-link" href="#" onclick="event.preventDefault(); navigate('Publications')">Publications</a>
           <a class="footer-link" href="#" onclick="event.preventDefault(); navigate('Contact')">Contact</a>
         </nav>
-        <nav aria-label="University links">
-          <p class="footer-col-title">University</p>
+        <nav aria-label="Department links">
+          <p class="footer-col-title">Department</p>
           ${extLink('https://medicine.utah.edu/neurobiology', 'footer-link', 'Dept. of Neurobiology')}
           ${extLink('http://neuroscience.med.utah.edu', 'footer-link', 'Neuroscience Graduate Program')}
           ${extLink('https://bioscience.utah.edu', 'footer-link', 'Molecular Biology Program')}
         </nav>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy">© ${new Date().getFullYear()} University of Utah · Dorsky Laboratory</p>
+        <p class="footer-copy">© ${new Date().getFullYear()} Dorsky Laboratory · Department of Neurobiology</p>
       </div>
     </footer>`;
 }
 
 /* ═══════════════════════════════════════════════════════════════
    MOBILE NAV TOGGLE
-   Keyboard accessible, aria-expanded updated
 ═══════════════════════════════════════════════════════════════ */
 function toggleMobileNav(btn) {
     const nav = document.getElementById('nav-menu');
@@ -765,16 +731,12 @@ let currentPage = 'Home';
 window.navigate = function(page) {
     currentPage = page;
     render();
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Announce page change to screen readers via live region (Developer §2 aria-live)
     const announcer = document.getElementById('page-announcer');
     if (announcer) {
         announcer.textContent = '';
-        // Small delay ensures the live region fires even if content didn't change
         setTimeout(() => { announcer.textContent = `Navigated to ${page} page`; }, 100);
     }
-    // Move focus to main content for keyboard users (Developer §3)
     setTimeout(() => {
         const main = document.getElementById('main');
         if (main) { main.focus(); }
@@ -795,23 +757,18 @@ function getPageContent(page) {
 function render() {
     const page = currentPage;
     document.getElementById('nav-container').innerHTML = renderNav(page);
+    // FIX: target 'page-container' which is the div inside <main id="main">
     document.getElementById('page-container').innerHTML = getPageContent(page);
     document.getElementById('footer-container').innerHTML = renderFooter();
 
-    // Update document title to reflect current page (Developer §3 — meaningful page titles)
     document.title = page === 'Home'
-        ? 'Dorsky Lab — University of Utah Neurobiology'
-        : `${page} — Dorsky Lab · University of Utah`;
+        ? 'Dorsky Lab — Neurobiology'
+        : `${page} — Dorsky Lab · Neurobiology`;
 
     setTimeout(() => {
         setupReveal();
-
-        if (page === 'Home') {
-            initHeroCanvas();
-        }
-        if (page === 'Contact') {
-            loadLeaflet();
-        }
+        if (page === 'Home') initHeroCanvas();
+        if (page === 'Contact') loadLeaflet();
     }, 50);
 }
 
@@ -829,14 +786,12 @@ function loadLeaflet() {
     document.head.appendChild(js);
 }
 
-// Scroll: add shadow to header on scroll
 window.addEventListener('scroll', () => {
     const h = document.querySelector('.site-header');
     if (h) h.style.boxShadow = window.scrollY > 40
         ? '0 2px 24px rgba(0,0,0,0.12)' : '0 1px 12px rgba(0,0,0,0.06)';
 });
 
-// Keyboard: close mobile nav on Escape
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         const nav = document.getElementById('nav-menu');
@@ -846,11 +801,10 @@ document.addEventListener('keydown', (e) => {
             if (btn) {
                 btn.setAttribute('aria-expanded', 'false');
                 btn.querySelector('span').textContent = '☰';
-                btn.focus(); // return focus to toggle
+                btn.focus();
             }
         }
     }
 });
 
-// Boot
 document.addEventListener('DOMContentLoaded', () => render());
