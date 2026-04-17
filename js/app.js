@@ -57,14 +57,14 @@ const DATA = {
                 tag: "Hypothalamus",
                 title: "Hypothalamic Neurogenesis & Behavior",
                 body: "This project focuses on the role of the Wnt pathway mediator Lef1 in generating stress-responsive hypothalamic neurons. We are investigating a novel evolutionarily conserved mechanism that may control Lef1 transcriptional activity and provide a possible link to human behavioral disorders.",
-                fig: "images/fig2.jpg",
+                fig: "images/fig2.png",
                 figAlt: "Figure 2: Hypothalamic neurogenesis research"
             },
             {
                 tag: "Spinal Cord",
                 title: "Spinal Cord Regeneration",
                 body: "This project focuses on the role of Wnt signaling after spinal cord injury. We have identified Wnt-dependent genes expressed in meningeal fibroblasts and are testing whether they are required for axon regrowth.",
-                fig: "images/fig3.jpg",
+                fig: "images/fig3.png",
                 figAlt: "Figure 3: Spinal cord regeneration research"
             }
         ]
@@ -305,7 +305,7 @@ function renderHome() {
         </button>
       </div>
       <div class="hero-right" style="display:flex;align-items:center;justify-content:center;background:#000;">
-        <img src="images/fig1.jpg" alt="Wnt signaling in the central nervous system"
+        <img src="images/fig1.png" alt="Wnt signaling in the central nervous system"
              style="width:70%;height:auto;max-height:80%;object-fit:contain;"/>
       </div>
     </section>
@@ -358,7 +358,7 @@ function renderMembers() {
 
     <section class="section" aria-labelledby="pi-heading">
       <div class="section-inner">
-        <img src="images/fig4.jpg" alt="Dorsky Lab group photo"
+        <img src="images/fig4.png" alt="Dorsky Lab group photo"
              style="max-width:340px;width:100%;border-radius:2px;display:block;margin-bottom:32px;"
              onerror="this.style.display='none'"/>
         <span class="label" aria-hidden="true">Principal Investigator</span>
@@ -434,7 +434,7 @@ function renderPublications() {
           <p class="page-banner-eyebrow" aria-hidden="true">Scholarship</p>
           <h1 class="page-banner-title">Selected<br/><strong><em>Publications</em></strong></h1>
         </div>
-        <img src="images/fig5.jpg" alt="Publications figure"
+        <img src="images/fig5.png" alt="Publications figure"
              style="max-width:280px;width:100%;max-height:220px;object-fit:contain;flex-shrink:0;display:block;"
              onerror="this.style.display='none'"/>
       </div>
