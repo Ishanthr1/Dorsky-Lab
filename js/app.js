@@ -1,16 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    DORSKY LAB — App Logic
    WCAG 2.1 AA Compliant
-   - Semantic HTML throughout (<header>,<nav>,<main>,<footer>,<article>,<section>)
-   - All interactive elements use proper <a> or <button> tags with labels
-   - aria-label, aria-current, aria-live, aria-hidden, aria-pressed added
-   - Skip link target (#main) supported
-   - Keyboard-navigable mobile menu with aria-expanded
-   - Decorative images/elements get aria-hidden="true"
-   - Color not used alone to convey info (filter buttons use aria-pressed)
-   - External links get rel="noopener noreferrer" + visually hidden "(opens in new tab)"
-   - Focus management on page navigation
-   - prefers-reduced-motion respected by CSS; canvas paused via JS
 ═══════════════════════════════════════════════════════════════ */
 
 /* ── DATA ── */
@@ -28,9 +18,9 @@ const DATA = {
         current: [
             { name: "Sam Alper", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20270x436.jpg", initials: "SA" },
             { name: "Guangning Wang", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20406x602.jpg", initials: "GW" },
-            { name: "Priscilla Figueroa", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20794x1280.jpg", initials: "PF" },
         ],
         prevPhDs: [
+            "Priscilla Figueroa",
             "Deeptha Vasudevan",
             "Jennifer Cheng",
             "Yuanyuan Xie",
@@ -62,22 +52,27 @@ const DATA = {
     ],
 
     research: {
-        questions: [
-            { label: "Evolutionary Neuroscience", title: "Can evolutionarily conserved innate behaviors be maintained through different neuronal circuits?", body: "A core question in our lab is whether the same behavioral outputs can emerge from distinct underlying circuitry across species or developmental timepoints. By studying how Wnt-dependent neurons are specified and how their ablation or augmentation shifts behavior, we investigate the plasticity and conservation of neuronal circuit architecture." },
-            { label: "Molecular Biology", title: "What are the molecular targets of Tcf proteins in Wnt-mediated neurogenesis?", body: "Tcf/Lef transcription factors are the primary nuclear effectors of canonical Wnt signaling. We use zebrafish genomics, reporter lines, and single-cell transcriptomics to identify direct Tcf target genes that drive neuronal specification in the hypothalamus and spinal cord. Understanding these targets opens windows into downstream pathways controlling proliferation, fate, and differentiation." },
-            { label: "Regeneration", title: "How does Wnt/Tcf-dependent neurogenesis contribute to regeneration and behavior?", body: "After spinal cord injury in zebrafish, radial glia reactivate Wnt signaling to produce new interneurons that functionally integrate into locomotor circuitry. We are identifying the molecular mechanisms mediating this process, and testing whether regenerated neurons are required for behavioral recovery — work directly relevant to therapeutic strategies for human spinal cord injury." }
-        ],
         areas: [
-            { tag: "Spinal Cord", title: "Wnt Signaling in Spinal Cord Neurogenesis", body: "We are interested in the functions of Wnt signaling in spinal cord development and regeneration. Our work has shown that repression of Wnt targets maintains a quiescent pool of radial glial progenitors in the embryonic spinal cord. Following spinal cord injury, Wnt signaling is required for radial glia to generate new neurons that integrate into functional locomotor circuitry. A current project in the lab is determining the molecular mechanisms downstream of Wnt signaling that mediate neurogenesis following injury. Identifying Wnt target genes required for regeneration in zebrafish could lead to candidates for therapeutic approaches in human spinal cord injury. A second project investigates whether new neurons integrating into functional circuitry are required for recovery of sensory and motor behavior." },
-            { tag: "Hypothalamus", title: "Hypothalamic Neurogenesis & Behavior", body: "This work focuses on the role of Wnt and Lef1 activity in the differentiation of neural progenitors in the posterior hypothalamus. This region of the brain maintains Wnt activity and continues to produce neurons throughout life, suggesting that Wnt-regulated neurogenesis plays an important role in the adult brain. We have found an evolutionarily conserved requirement for Lef1 in mediating anxiety-related exploratory behavior, through the differentiation of hypothalamic neurons. We have identified Lef1 target genes in the zebrafish and mouse hypothalamus, and are determining their functions in neurogenesis and behavior." }
+            {
+                tag: "Hypothalamus",
+                title: "Hypothalamic Neurogenesis & Behavior",
+                body: "This project focuses on the role of the Wnt pathway mediator Lef1 in generating stress-responsive hypothalamic neurons. We are investigating a novel evolutionarily conserved mechanism that may control Lef1 transcriptional activity and provide a possible link to human behavioral disorders.",
+                fig: "images/fig2.jpg",
+                figAlt: "Figure 2: Hypothalamic neurogenesis research"
+            },
+            {
+                tag: "Spinal Cord",
+                title: "Spinal Cord Regeneration",
+                body: "This project focuses on the role of Wnt signaling after spinal cord injury. We have identified Wnt-dependent genes expressed in meningeal fibroblasts and are testing whether they are required for axon regrowth.",
+                fig: "images/fig3.jpg",
+                figAlt: "Figure 3: Spinal cord regeneration research"
+            }
         ]
     }
 };
 
 /* ═══════════════════════════════════════════════════════════════
    WEBGL HERO CANVAS — Zebrafish particle field
-   Accessibility: canvas is aria-hidden (decorative)
-   Respects prefers-reduced-motion
 ═══════════════════════════════════════════════════════════════ */
 function initHeroCanvas() {
     const canvas = document.getElementById('hero-canvas');
@@ -297,9 +292,8 @@ function renderHome() {
       <div class="hero-left">
         <p class="hero-eyebrow" aria-hidden="true">Dorsky Lab · Est. 2001</p>
         <h1 class="hero-title">
-          <em>Wnt</em>
-          Signaling
-          &amp; Neurogenesis
+          Wnt signaling
+          in the <strong>CNS</strong>
         </h1>
         <p class="hero-body">
           Decoding how Wnt-dependent neurons establish, modify, and restore
@@ -310,71 +304,10 @@ function renderHome() {
           <span class="hero-cta-arrow" aria-hidden="true">→</span>
         </button>
       </div>
-      <div class="hero-right" aria-hidden="true">
-        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-right">
+        <img src="images/fig1.jpg" alt="Wnt signaling in the central nervous system"
+             style="width:100%;height:100%;object-fit:cover;object-position:center;"/>
       </div>
-    </section>
-
-    <div class="hero-stats reveal" role="list" aria-label="Lab statistics">
-      <div class="hero-stat" role="listitem">
-        <div class="hero-stat-num" aria-label="3">3</div>
-        <div class="hero-stat-label">Core Research Questions</div>
-      </div>
-      <div class="hero-stat" role="listitem">
-        <div class="hero-stat-num" aria-label="More than 20">20+</div>
-        <div class="hero-stat-label">Years of Research</div>
-      </div>
-      <div class="hero-stat" role="listitem">
-        <div class="hero-stat-num" aria-label="14">14</div>
-        <div class="hero-stat-label">Ph.D. Alumni</div>
-      </div>
-      <div class="hero-stat" role="listitem">
-        <div class="hero-stat-num" aria-label="2">2</div>
-        <div class="hero-stat-label">Active Research Areas</div>
-      </div>
-    </div>
-
-    <section class="section" aria-labelledby="about-heading">
-      <div class="section-inner">
-        <div class="reveal">
-          <span class="label" aria-hidden="true">About the Lab</span>
-          <div class="red-rule" aria-hidden="true"></div>
-          <h2 id="about-heading" class="section-title">Studying CNS <em>neurogenesis</em><br/>through the lens of evolution</h2>
-        </div>
-        <div class="reveal" style="transition-delay:100ms">
-          <p class="section-body">
-            The Dorsky laboratory studies the role of the Wnt signaling pathway in CNS neurogenesis.
-            We use zebrafish as a model organism, focusing on how Wnt-dependent neurons function to
-            establish, modify, and restore behavior. Our current work focuses on Wnt-mediated
-            neurogenesis in the hypothalamus and spinal cord.
-          </p>
-        </div>
-        <div class="pillars-grid" role="list" aria-label="Research focus areas">
-          ${[
-        { n: "01", t: "Conserved Circuits", b: "Can evolutionarily conserved innate behaviors be maintained through different neuronal circuits?" },
-        { n: "02", t: "Molecular Targets", b: "What are the molecular targets of Tcf proteins in Wnt-mediated neurogenesis?" },
-        { n: "03", t: "Regeneration", b: "How does Wnt/Tcf-dependent neurogenesis contribute to regeneration and behavior recovery?" },
-    ].map((c, i) => `
-            <article class="pillar reveal" role="listitem" style="transition-delay:${i * 120}ms">
-              <div class="pillar-number" aria-hidden="true" data-n="${c.n}"></div>
-              <h3 class="pillar-title">${c.t}</h3>
-              <p class="pillar-body">${c.b}</p>
-            </article>`).join('')}
-        </div>
-      </div>
-    </section>
-
-    <section class="research-preview" aria-label="Research areas overview">
-      ${DATA.research.areas.map((a, i) => `
-        <article class="research-preview-item reveal" style="transition-delay:${i * 150}ms">
-          <div class="rp-tag">${a.tag}</div>
-          <h2 class="rp-title">${a.title}</h2>
-          <p class="rp-body">${a.body.substring(0, 200)}…</p>
-          <button class="rp-link" onclick="navigate('Research')" type="button">
-            Learn More <span aria-hidden="true">→</span>
-            <span class="sr-only">about ${a.title}</span>
-          </button>
-        </article>`).join('')}
     </section>
   `;
 }
@@ -385,22 +318,9 @@ function renderResearch() {
     <div class="page-banner" role="banner">
       <div class="page-banner-inner">
         <p class="page-banner-eyebrow" aria-hidden="true">Research Program</p>
-        <h1 class="page-banner-title">Three <em>fundamental</em><br/><strong>questions</strong> in neurogenesis</h1>
-        <p class="page-banner-sub">Our work focuses on Wnt-mediated neurogenesis in the hypothalamus and spinal cord, using zebrafish as a powerful genetic model system.</p>
+        <h1 class="page-banner-title">We study the function of Wnt-dependent transcription in the zebrafish central nervous system</h1>
       </div>
     </div>
-
-    <section class="rq-list section" style="padding-top:72px;padding-bottom:0" aria-label="Research questions">
-      ${DATA.research.questions.map((q, i) => `
-        <article class="rq-item" style="transition-delay:${i * 100}ms">
-          <div class="rq-num" aria-hidden="true">${String(i+1).padStart(2,'0')}</div>
-          <div>
-            <p class="rq-label">${q.label}</p>
-            <h2 class="rq-title">${q.title}</h2>
-            <p class="rq-body">${q.body}</p>
-          </div>
-        </article>`).join('')}
-    </section>
 
     <section class="section" style="padding-top:96px" aria-labelledby="active-areas-heading">
       <div class="section-inner">
@@ -415,6 +335,9 @@ function renderResearch() {
               <div class="ra-tag">${a.tag}</div>
               <h3 class="ra-title">${a.title}</h3>
               <p class="ra-body">${a.body}</p>
+              <img src="${a.fig}" alt="${a.figAlt}"
+                   style="margin-top:32px;max-width:100%;border-radius:2px;display:block;"
+                   onerror="this.style.display='none'"/>
             </article>`).join('')}
         </div>
       </div>
@@ -426,11 +349,13 @@ function renderMembers() {
     const pi = DATA.members.pi;
     return `
     ${renderBreadcrumb('Members')}
-    <div class="page-banner">
+    <div class="page-banner" role="banner">
       <div class="page-banner-inner">
         <p class="page-banner-eyebrow" aria-hidden="true">The Team</p>
         <h1 class="page-banner-title">Lab <strong><em>Members</em></strong></h1>
-        <p class="page-banner-sub">A collaborative team of graduate students and staff dedicated to understanding the molecular logic of neurogenesis.</p>
+        <img src="images/fig4.jpeg" alt="Dorsky Lab group photo"
+             style="margin-top:32px;max-width:100%;max-height:320px;object-fit:cover;object-position:center;display:block;"
+             onerror="this.style.display='none'"/>
       </div>
     </div>
 
@@ -507,27 +432,19 @@ function renderPublications() {
       <div class="page-banner-inner">
         <p class="page-banner-eyebrow" aria-hidden="true">Scholarship</p>
         <h1 class="page-banner-title">Selected<br/><strong><em>Publications</em></strong></h1>
-        <p class="page-banner-sub">Peer-reviewed research from the Dorsky Laboratory spanning spinal cord regeneration, hypothalamic neurogenesis, and Wnt signaling.</p>
+        <img src="images/fig5.jpg" alt="Publications figure"
+             style="margin-top:32px;max-width:100%;max-height:320px;object-fit:cover;object-position:center;display:block;"
+             onerror="this.style.display='none'"/>
       </div>
     </div>
 
     <section class="section" aria-labelledby="pubs-heading">
       <div class="section-inner">
         <h2 id="pubs-heading" class="sr-only">Publication list</h2>
-        <div class="pub-filters" role="group" aria-label="Filter publications by topic">
-          <button class="pub-filter active" type="button" aria-pressed="true"
-                  onclick="filterPubs('all', this)">All Publications</button>
-          <button class="pub-filter" type="button" aria-pressed="false"
-                  onclick="filterPubs('spinal', this)">Spinal Cord</button>
-          <button class="pub-filter" type="button" aria-pressed="false"
-                  onclick="filterPubs('hypothalamus', this)">Hypothalamus</button>
-        </div>
-
-        <div aria-live="polite" aria-atomic="true" class="sr-only" id="pub-status"></div>
 
         <ul id="pub-list" style="list-style:none;padding:0;">
           ${DATA.publications.map((p, i) => `
-            <li class="pub-card" style="transition-delay:${i * 80}ms" data-topic="${getPubTopic(p)}">
+            <li class="pub-card" style="transition-delay:${i * 80}ms">
               <div class="pub-year">${p.year}</div>
               <div>
                 <p class="pub-authors">${p.authors}</p>
@@ -547,36 +464,6 @@ function renderPublications() {
       </div>
     </section>
   `;
-}
-
-function getPubTopic(pub) {
-    const text = (pub.title + pub.journal).toLowerCase();
-    if (text.includes('spinal') || text.includes('locomotor') || text.includes('zebrafish') || text.includes('regenerat')) return 'spinal';
-    if (text.includes('hypothal') || text.includes('anxiety') || text.includes('lef1') || text.includes('behavior')) return 'hypothalamus';
-    return 'all';
-}
-
-function filterPubs(topic, btn) {
-    document.querySelectorAll('.pub-filter').forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-    });
-    btn.classList.add('active');
-    btn.setAttribute('aria-pressed', 'true');
-
-    let visibleCount = 0;
-    document.querySelectorAll('.pub-card').forEach(card => {
-        const t = card.dataset.topic;
-        const show = topic === 'all' || t === topic;
-        card.style.display = show ? 'grid' : 'none';
-        if (show) visibleCount++;
-    });
-
-    const status = document.getElementById('pub-status');
-    if (status) {
-        const label = btn.textContent.replace('(opens in new tab)', '').trim();
-        status.textContent = `Showing ${visibleCount} publication${visibleCount !== 1 ? 's' : ''} for: ${label}`;
-    }
 }
 
 function renderContact() {
@@ -620,18 +507,6 @@ function renderContact() {
             Lab: <a href="tel:+18015814529" style="color:inherit;text-decoration:underline">(801) 581-4529</a>
           </p>
         </div>
-
-        <div class="contact-rule" role="separator" aria-hidden="true"></div>
-
-        <nav class="grad-section" aria-label="Graduate program links">
-          <p class="grad-label">Graduate Programs</p>
-          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.8;margin-bottom:20px">
-            Ph.D. students may apply through:
-          </p>
-          ${extLink('https://bioscience.utah.edu', 'grad-link', 'Molecular Biology Program →')}
-          ${extLink('http://neuroscience.med.utah.edu', 'grad-link', 'Neuroscience Graduate Program →')}
-          ${extLink('https://medicine.utah.edu/neurobiology', 'grad-link', 'Department of Neurobiology →')}
-        </nav>
       </section>
 
       <div class="contact-map-wrap">
@@ -757,7 +632,6 @@ function getPageContent(page) {
 function render() {
     const page = currentPage;
     document.getElementById('nav-container').innerHTML = renderNav(page);
-    // FIX: target 'page-container' which is the div inside <main id="main">
     document.getElementById('page-container').innerHTML = getPageContent(page);
     document.getElementById('footer-container').innerHTML = renderFooter();
 
