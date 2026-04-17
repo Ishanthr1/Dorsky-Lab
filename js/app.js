@@ -11,13 +11,13 @@ const DATA = {
             role: "Principal Investigator",
             title: "Professor · Department of Neurobiology",
             email: "richard.dorsky@neuro.utah.edu",
-            img: "https://www.neuro.utah.edu/labs/dorsky/images/dorsky%20photo%20small.jpg",
+            img: "images/Dorsky.jpg",
             initials: "RD",
             bio: "Dr. Dorsky's research focuses on the role of Wnt signaling in CNS neurogenesis, using zebrafish to understand how neurons are generated, specified, and integrated into functional circuits that control behavior."
         },
         current: [
-            { name: "Sam Alper", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20270x436.jpg", initials: "SA" },
-            { name: "Guangning Wang", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20406x602.jpg", initials: "GW" },
+            { name: "Sam Alper", role: "Ph.D. Student", img: "images/Guangning.jpg", initials: "SA" },
+            { name: "Guangning Wang", role: "Ph.D. Student", img: "images/Sam.jpg", initials: "GW" },
         ],
         prevPhDs: [
             "Priscilla Figueroa",
@@ -57,14 +57,14 @@ const DATA = {
                 tag: "Hypothalamus",
                 title: "Hypothalamic Neurogenesis & Behavior",
                 body: "This project focuses on the role of the Wnt pathway mediator Lef1 in generating stress-responsive hypothalamic neurons. We are investigating a novel evolutionarily conserved mechanism that may control Lef1 transcriptional activity and provide a possible link to human behavioral disorders.",
-                fig: "images/fig2.jpg",
+                fig: "images/fig2.png",
                 figAlt: "Figure 2: Hypothalamic neurogenesis research"
             },
             {
                 tag: "Spinal Cord",
                 title: "Spinal Cord Regeneration",
                 body: "This project focuses on the role of Wnt signaling after spinal cord injury. We have identified Wnt-dependent genes expressed in meningeal fibroblasts and are testing whether they are required for axon regrowth.",
-                fig: "images/fig3.jpg",
+                fig: "images/fig3.png",
                 figAlt: "Figure 3: Spinal cord regeneration research"
             }
         ]
@@ -305,7 +305,7 @@ function renderHome() {
         </button>
       </div>
       <div class="hero-right">
-        <img src="images/fig1.jpg" alt="Wnt signaling in the central nervous system"
+        <img src="../images/fig1.png" alt="Wnt signaling in the central nervous system"
              style="width:100%;height:100%;object-fit:cover;object-position:center;"/>
       </div>
     </section>
@@ -353,7 +353,7 @@ function renderMembers() {
       <div class="page-banner-inner">
         <p class="page-banner-eyebrow" aria-hidden="true">The Team</p>
         <h1 class="page-banner-title">Lab <strong><em>Members</em></strong></h1>
-        <img src="images/fig4.jpeg" alt="Dorsky Lab group photo"
+        <img src="../images/fig4.jpeg" alt="Dorsky Lab group photo"
              style="margin-top:32px;max-width:100%;max-height:320px;object-fit:cover;object-position:center;display:block;"
              onerror="this.style.display='none'"/>
       </div>
@@ -432,7 +432,7 @@ function renderPublications() {
       <div class="page-banner-inner">
         <p class="page-banner-eyebrow" aria-hidden="true">Scholarship</p>
         <h1 class="page-banner-title">Selected<br/><strong><em>Publications</em></strong></h1>
-        <img src="images/fig5.jpg" alt="Publications figure"
+        <img src="../images/fig5.png" alt="Publications figure"
              style="margin-top:32px;max-width:100%;max-height:320px;object-fit:cover;object-position:center;display:block;"
              onerror="this.style.display='none'"/>
       </div>
