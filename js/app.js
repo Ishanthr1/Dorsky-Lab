@@ -11,13 +11,13 @@ const DATA = {
             role: "Principal Investigator",
             title: "Professor · Department of Neurobiology",
             email: "richard.dorsky@neuro.utah.edu",
-            img: "images/Dorsky.jpg",
+            img: "https://www.neuro.utah.edu/labs/dorsky/images/dorsky%20photo%20small.jpg",
             initials: "RD",
             bio: "Dr. Dorsky's research focuses on the role of Wnt signaling in CNS neurogenesis, using zebrafish to understand how neurons are generated, specified, and integrated into functional circuits that control behavior."
         },
         current: [
-            { name: "Sam Alper", role: "Ph.D. Student", img: "images/Guangning.jpg", initials: "SA" },
-            { name: "Guangning Wang", role: "Ph.D. Student", img: "images/Sam.jpg", initials: "GW" },
+            { name: "Sam Alper", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20270x436.jpg", initials: "SA" },
+            { name: "Guangning Wang", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20406x602.jpg", initials: "GW" },
         ],
         prevPhDs: [
             "Priscilla Figueroa",
@@ -57,14 +57,14 @@ const DATA = {
                 tag: "Hypothalamus",
                 title: "Hypothalamic Neurogenesis & Behavior",
                 body: "This project focuses on the role of the Wnt pathway mediator Lef1 in generating stress-responsive hypothalamic neurons. We are investigating a novel evolutionarily conserved mechanism that may control Lef1 transcriptional activity and provide a possible link to human behavioral disorders.",
-                fig: "images/fig2.png",
+                fig: "images/fig2.jpg",
                 figAlt: "Figure 2: Hypothalamic neurogenesis research"
             },
             {
                 tag: "Spinal Cord",
                 title: "Spinal Cord Regeneration",
                 body: "This project focuses on the role of Wnt signaling after spinal cord injury. We have identified Wnt-dependent genes expressed in meningeal fibroblasts and are testing whether they are required for axon regrowth.",
-                fig: "images/fig3.png",
+                fig: "images/fig3.jpg",
                 figAlt: "Figure 3: Spinal cord regeneration research"
             }
         ]
@@ -304,9 +304,9 @@ function renderHome() {
           <span class="hero-cta-arrow" aria-hidden="true">→</span>
         </button>
       </div>
-      <div class="hero-right">
-        <img src="../images/fig1.png" alt="Wnt signaling in the central nervous system"
-             style="width:100%;height:100%;object-fit:cover;object-position:center;"/>
+      <div class="hero-right" style="display:flex;align-items:center;justify-content:center;background:#000;">
+        <img src="images/fig1.jpg" alt="Wnt signaling in the central nervous system"
+             style="width:70%;height:auto;max-height:80%;object-fit:contain;"/>
       </div>
     </section>
   `;
@@ -336,7 +336,7 @@ function renderResearch() {
               <h3 class="ra-title">${a.title}</h3>
               <p class="ra-body">${a.body}</p>
               <img src="${a.fig}" alt="${a.figAlt}"
-                   style="margin-top:32px;max-width:100%;border-radius:2px;display:block;"
+                   style="margin-top:28px;max-width:420px;width:100%;border-radius:2px;display:block;"
                    onerror="this.style.display='none'"/>
             </article>`).join('')}
         </div>
@@ -353,14 +353,14 @@ function renderMembers() {
       <div class="page-banner-inner">
         <p class="page-banner-eyebrow" aria-hidden="true">The Team</p>
         <h1 class="page-banner-title">Lab <strong><em>Members</em></strong></h1>
-        <img src="../images/fig4.jpeg" alt="Dorsky Lab group photo"
-             style="margin-top:32px;max-width:100%;max-height:320px;object-fit:cover;object-position:center;display:block;"
-             onerror="this.style.display='none'"/>
       </div>
     </div>
 
     <section class="section" aria-labelledby="pi-heading">
       <div class="section-inner">
+        <img src="images/fig4.jpg" alt="Dorsky Lab group photo"
+             style="max-width:340px;width:100%;border-radius:2px;display:block;margin-bottom:32px;"
+             onerror="this.style.display='none'"/>
         <span class="label" aria-hidden="true">Principal Investigator</span>
         <div class="red-rule" aria-hidden="true"></div>
 
@@ -429,11 +429,13 @@ function renderPublications() {
     return `
     ${renderBreadcrumb('Publications')}
     <div class="page-banner">
-      <div class="page-banner-inner">
-        <p class="page-banner-eyebrow" aria-hidden="true">Scholarship</p>
-        <h1 class="page-banner-title">Selected<br/><strong><em>Publications</em></strong></h1>
-        <img src="../images/fig5.png" alt="Publications figure"
-             style="margin-top:32px;max-width:100%;max-height:320px;object-fit:cover;object-position:center;display:block;"
+      <div class="page-banner-inner" style="display:flex;align-items:center;gap:48px;">
+        <div>
+          <p class="page-banner-eyebrow" aria-hidden="true">Scholarship</p>
+          <h1 class="page-banner-title">Selected<br/><strong><em>Publications</em></strong></h1>
+        </div>
+        <img src="images/fig5.jpg" alt="Publications figure"
+             style="max-width:280px;width:100%;max-height:220px;object-fit:contain;flex-shrink:0;display:block;"
              onerror="this.style.display='none'"/>
       </div>
     </div>
