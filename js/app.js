@@ -11,13 +11,13 @@ const DATA = {
             role: "Principal Investigator",
             title: "Professor · Department of Neurobiology",
             email: "richard.dorsky@neuro.utah.edu",
-            img: "https://www.neuro.utah.edu/labs/dorsky/images/dorsky%20photo%20small.jpg",
+            img: "images/Dorsky.jpg",
             initials: "RD",
             bio: "Dr. Dorsky's research focuses on the role of Wnt signaling in CNS neurogenesis, using zebrafish to understand how neurons are generated, specified, and integrated into functional circuits that control behavior."
         },
         current: [
-            { name: "Sam Alper", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20270x436.jpg", initials: "SA" },
-            { name: "Guangning Wang", role: "Ph.D. Student", img: "https://www.neuro.utah.edu/labs/dorsky/images/pasted%20image%20406x602.jpg", initials: "GW" },
+            { name: "Sam Alper", role: "Ph.D. Student", img: "images/Sam.jpg", initials: "SA" },
+            { name: "Guangning Wang", role: "Ph.D. Student", img: "iamges/Guangning.jpg", initials: "GW" },
         ],
         prevPhDs: [
             "Priscilla Figueroa",
@@ -350,17 +350,21 @@ function renderMembers() {
     return `
     ${renderBreadcrumb('Members')}
     <div class="page-banner" role="banner">
-      <div class="page-banner-inner">
-        <p class="page-banner-eyebrow" aria-hidden="true">The Team</p>
-        <h1 class="page-banner-title">Lab <strong><em>Members</em></strong></h1>
+      <div class="page-banner-inner" style="display:grid;grid-template-columns:1fr 1fr;align-items:center;">
+        <div>
+          <p class="page-banner-eyebrow" aria-hidden="true">The Team</p>
+          <h1 class="page-banner-title">Lab <strong><em>Members</em></strong></h1>
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center;">
+          <img src="images/fig4.png" alt="Dorsky Lab group photo"
+               style="max-width:380px;width:100%;max-height:260px;object-fit:contain;display:block;"
+               onerror="this.style.display='none'"/>
+        </div>
       </div>
     </div>
 
     <section class="section" aria-labelledby="pi-heading">
       <div class="section-inner">
-        <img src="images/fig4.png" alt="Dorsky Lab group photo"
-             style="max-width:340px;width:100%;border-radius:2px;display:block;margin-bottom:32px;"
-             onerror="this.style.display='none'"/>
         <span class="label" aria-hidden="true">Principal Investigator</span>
         <div class="red-rule" aria-hidden="true"></div>
 
@@ -429,14 +433,17 @@ function renderPublications() {
     return `
     ${renderBreadcrumb('Publications')}
     <div class="page-banner">
-      <div class="page-banner-inner" style="display:flex;align-items:center;gap:48px;">
+      <div class="page-banner-inner" style="display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;">
         <div>
           <p class="page-banner-eyebrow" aria-hidden="true">Scholarship</p>
           <h1 class="page-banner-title">Selected<br/><strong><em>Publications</em></strong></h1>
         </div>
-        <img src="images/fig5.png" alt="Publications figure"
-             style="max-width:280px;width:100%;max-height:220px;object-fit:contain;flex-shrink:0;display:block;"
-             onerror="this.style.display='none'"/>
+        <div style="display:flex;justify-content:center;align-items:center;">
+          <img src="images/fig5.png" alt="Publications figure"
+               style="max-width:460px;width:100%;max-height:380px;object-fit:contain;display:block;"
+               onerror="this.style.display='none'"/>
+        </div>
+        <div></div>
       </div>
     </div>
 
