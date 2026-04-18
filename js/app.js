@@ -213,7 +213,7 @@ function initMap() {
     const el = document.getElementById('leaflet-map');
     if (!el || !window.L) return;
 
-    const LAB = [40.7656, -111.8387];
+    const LAB = [40.7649, -111.8359];
     const map = L.map('leaflet-map', { center: LAB, zoom: 16, zoomControl: false });
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -230,7 +230,11 @@ function initMap() {
 
     const icon = L.divIcon({ html: markerHtml, className: '', iconSize: [40, 40], iconAnchor: [20, 20] });
     L.marker(LAB, { icon, alt: 'Dorsky Lab, BPRB Building' }).addTo(map)
-        .bindPopup('<b style="font-size:12px">Dorsky Lab · BPRB</b>');
+        .bindPopup(`
+            <b style="font-size:12px">Dorsky Lab · BPRB</b><br/>
+            20 S 2030 E<br/>
+            Salt Lake City, UT
+        `);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 }
 
@@ -295,10 +299,6 @@ function renderHome() {
           Wnt signaling
           in the <strong>CNS</strong>
         </h1>
-        <p class="hero-body">
-          Decoding how Wnt-dependent neurons establish, modify, and restore
-          behavior — using zebrafish as a powerful genetic model system.
-        </p>
         <button class="hero-cta" onclick="navigate('Research')" type="button">
           Explore Research
           <span class="hero-cta-arrow" aria-hidden="true">→</span>
@@ -502,12 +502,6 @@ function renderContact() {
         </div>
 
         <div style="margin-bottom:32px">
-          <p class="addr-label" id="shipping-label">Shipping Address (FedEx)</p>
-          <address class="addr-text" aria-labelledby="shipping-label">
-            1795 E. South Campus Drive<br/>
-            BPRB Room #456<br/>
-            Salt Lake City, UT 84112
-          </address>
           <p class="contact-phone" style="margin-top:16px">
             Office: <a href="tel:+18015816073" style="color:inherit;text-decoration:underline">(801) 581-6073</a><br/>
             Lab: <a href="tel:+18015814529" style="color:inherit;text-decoration:underline">(801) 581-4529</a>
