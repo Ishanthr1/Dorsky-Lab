@@ -17,7 +17,7 @@ const DATA = {
         },
         current: [
             { name: "Sam Alper", role: "Ph.D. Student", img: "images/Sam.jpg", initials: "SA" },
-            { name: "Guangning Wang", role: "Ph.D. Student", img: "iamges/Guangning.jpg", initials: "GW" },
+            { name: "Guangning Wang", role: "Ph.D. Student", img: "images/Guangning.jpg", initials: "GW" },
         ],
         prevPhDs: [
             "Priscilla Figueroa",
@@ -357,7 +357,7 @@ function renderMembers() {
         </div>
         <div style="display:flex;justify-content:center;align-items:center;">
           <img src="images/fig4.png" alt="Dorsky Lab group photo"
-               style="max-width:380px;width:100%;max-height:260px;object-fit:contain;display:block;"
+               style="max-width:480px;width:100%;max-height:360px;object-fit:contain;display:block;"
                onerror="this.style.display='none'"/>
         </div>
       </div>
@@ -432,18 +432,15 @@ function renderMembers() {
 function renderPublications() {
     return `
     ${renderBreadcrumb('Publications')}
-    <div class="page-banner">
-      <div class="page-banner-inner" style="display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;">
-        <div>
+    <div class="page-banner" style="padding-right:48px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:nowrap;width:100%;max-width:var(--max-w);margin:0 auto;">
+        <div style="flex-shrink:0;">
           <p class="page-banner-eyebrow" aria-hidden="true">Scholarship</p>
           <h1 class="page-banner-title">Selected<br/><strong><em>Publications</em></strong></h1>
         </div>
-        <div style="display:flex;justify-content:center;align-items:center;">
-          <img src="images/fig5.png" alt="Publications figure"
-               style="max-width:460px;width:100%;max-height:380px;object-fit:contain;display:block;"
-               onerror="this.style.display='none'"/>
-        </div>
-        <div></div>
+        <img src="images/fig5.png" alt="Publications figure"
+             style="width:480px;height:400px;object-fit:contain;display:block;flex-shrink:0;"
+             onerror="this.style.display='none'"/>
       </div>
     </div>
 
