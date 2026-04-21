@@ -39,7 +39,24 @@
 <div id="page-announcer" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 
 <!-- App Script -->
-<script src="js/app.js"></script>
+    <!-- Netlify Identity Widget (required for Decap CMS authentication) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- App Script -->
+    <script src="js/app.js"></script>
+
+    <!-- Redirect to /admin after Netlify Identity login -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function(user) {
+          if (!user) {
+            window.netlifyIdentity.on("login", function() {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
 
 </body>
 </html>

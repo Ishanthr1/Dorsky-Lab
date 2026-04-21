@@ -1,0 +1,80 @@
+backend:
+  name: git-gateway
+  branch: main   # change to your default branch if different
+
+# Decap CMS reads/writes files directly in the repo — no build pipeline
+media_folder: "images"
+public_folder: "images"
+
+collections:
+
+  # ── Single top-level JSON file ──────────────────────────────────
+  - name: "site_data"
+    label: "Site Data"
+    files:
+
+      # ─── MEMBERS ────────────────────────────────────────────────
+      - name: "members"
+        label: "Lab Members"
+        file: "data.json"
+        # We scope to the members sub-object with a single flat editor
+        # by using a custom "object" field that mirrors the JSON shape.
+        fields:
+          - label: "Principal Investigator"
+            name: "members"
+            widget: "object"
+            fields:
+              - label: "PI Profile"
+                name: "pi"
+                widget: "object"
+                fields:
+                  - { label: "Full Name",      name: "name",     widget: "string" }
+                  - { label: "Role",            name: "role",     widget: "string" }
+                  - { label: "Title",           name: "title",    widget: "string" }
+                  - { label: "Email",           name: "email",    widget: "string" }
+                  - { label: "Photo",           name: "img",      widget: "image" }
+                  - { label: "Initials",        name: "initials", widget: "string" }
+                  - { label: "Biography",       name: "bio",      widget: "text" }
+
+              - label: "Current Lab Members"
+                name: "current"
+                widget: "list"
+                fields:
+                  - { label: "Name",     name: "name",     widget: "string" }
+                  - { label: "Role",     name: "role",     widget: "string" }
+                  - { label: "Photo",    name: "img",      widget: "image",  required: false }
+                  - { label: "Initials", name: "initials", widget: "string" }
+
+              - label: "Previous Ph.D. Students"
+                name: "prevPhDs"
+                widget: "list"
+                field: { label: "Name", name: "name", widget: "string" }
+
+              - label: "Previous Postdoctoral Researchers"
+                name: "prevPostdocs"
+                widget: "list"
+                field: { label: "Name", name: "name", widget: "string" }
+
+          - label: "Publications"
+            name: "publications"
+            widget: "list"
+            fields:
+              - { label: "Year",    name: "year",    widget: "string" }
+              - { label: "Authors", name: "authors", widget: "string" }
+              - { label: "Title",   name: "title",   widget: "string" }
+              - { label: "Journal", name: "journal", widget: "string" }
+              - { label: "Volume",  name: "volume",  widget: "string" }
+
+          - label: "Research"
+            name: "research"
+            widget: "object"
+            fields:
+              - label: "Research Areas"
+                name: "areas"
+                widget: "list"
+                fields:
+                  - { label: "Tag",         name: "tag",    widget: "string" }
+                  - { label: "Title",       name: "title",  widget: "string" }
+                  - { label: "Description", name: "body",   widget: "text" }
+                  - { label: "Figure",      name: "fig",    widget: "image" }
+                  - { label: "Figure Alt",  name: "figAlt", widget: "string" }

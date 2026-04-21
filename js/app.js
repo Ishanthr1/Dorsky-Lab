@@ -3,73 +3,7 @@
    WCAG 2.1 AA Compliant
 ═══════════════════════════════════════════════════════════════ */
 
-/* ── DATA ── */
-const DATA = {
-    members: {
-        pi: {
-            name: "Richard Dorsky",
-            role: "Principal Investigator",
-            title: "Professor · Department of Neurobiology",
-            email: "richard.dorsky@neuro.utah.edu",
-            img: "images/Dorsky.jpg",
-            initials: "RD",
-            bio: "Dr. Dorsky's research focuses on the role of Wnt signaling in CNS neurogenesis, using zebrafish to understand how neurons are generated, specified, and integrated into functional circuits that control behavior."
-        },
-        current: [
-            { name: "Sam Alper", role: "Ph.D. Student", img: "images/Sam.jpg", initials: "SA" },
-            { name: "Guangning Wang", role: "Ph.D. Student", img: "images/Guangning.jpg", initials: "GW" },
-        ],
-        prevPhDs: [
-            "Priscilla Figueroa",
-            "Deeptha Vasudevan",
-            "Jennifer Cheng",
-            "Yuanyuan Xie",
-            "Adam McPherson",
-            "Rob Duncan",
-            "Xu Wang",
-            "Lisa Brlona",
-            "Eric Veien",
-            "Suzanna Gribble",
-            "Ji Eun Lee"
-        ],
-        prevPostdocs: [
-            "Yen-Chyi Liu",
-            "David Hutcheson",
-            "Hideo Otsuna",
-            "Junji Lin",
-            "Hyungseok Kim",
-            "Jennifer Bonner"
-        ]
-    },
-
-    publications: [
-        { year: "2022", authors: "Alper SR, Dorsky RI.", title: "Unique advantages of zebrafish larvae as a model for spinal cord regeneration.", journal: "Front Mol Neurosci", volume: "15:983336" },
-        { year: "2021", authors: "Vasudevan D, Liu Y, Barrios JP, Wheeler MK, Douglass AD, Dorsky RI.", title: "Regenerated interneurons integrate into locomotor circuitry following spinal cord injury.", journal: "Exp Neurol", volume: "342:113737" },
-        { year: "2020", authors: "Hutcheson DA, Xie Y, Figueroa P, Dorsky RI.", title: "A transgene targeted to the zebrafish nkx2.4b locus drives specific GFP expression and disrupts thyroid development.", journal: "Dev Dyn", volume: "249(11):1387–1393" },
-        { year: "2017", authors: "Xie Y, Kaufmann D, Moulton MJ, Panahi S, Gaynes JA, et al.", title: "Lef1-dependent hypothalamic neurogenesis inhibits anxiety.", journal: "PLoS Biology", volume: "15, e2002257" },
-        { year: "2017", authors: "Xie Y, Dorsky RI.", title: "Development of the hypothalamus: conservation, modification and innovation.", journal: "Development", volume: "144, 1588–1599" },
-        { year: "2015", authors: "Gaynes JA, Bhatt DK, Smith WB, McPherson AD, Bhatt DK, Bhatt DK, Dorsky RI.", title: "Tcf7l2 mediates hypothalamic neurogenesis and depressive behaviors.", journal: "J Neurosci", volume: "35(23):8954–8964" },
-    ],
-
-    research: {
-        areas: [
-            {
-                tag: "Hypothalamus",
-                title: "Hypothalamic Neurogenesis & Behavior",
-                body: "This project focuses on the role of the Wnt pathway mediator Lef1 in generating stress-responsive hypothalamic neurons. We are investigating a novel evolutionarily conserved mechanism that may control Lef1 transcriptional activity and provide a possible link to human behavioral disorders.",
-                fig: "images/fig2.png",
-                figAlt: "Figure 2: Hypothalamic neurogenesis research"
-            },
-            {
-                tag: "Spinal Cord",
-                title: "Spinal Cord Regeneration",
-                body: "This project focuses on the role of Wnt signaling after spinal cord injury. We have identified Wnt-dependent genes expressed in meningeal fibroblasts and are testing whether they are required for axon regrowth.",
-                fig: "images/fig3.png",
-                figAlt: "Figure 3: Spinal cord regeneration research"
-            }
-        ]
-    }
-};
+/* ── DATA is loaded from data.json at runtime (see DOMContentLoaded below) ── */
 
 /* ═══════════════════════════════════════════════════════════════
    WEBGL HERO CANVAS — Zebrafish particle field
@@ -681,4 +615,15 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => render());
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const res = await fetch('data.json');
+        if (!res.ok) throw new Error('Failed to load data.json');
+        window.DATA = await res.json();
+    } catch (err) {
+        console.error('Could not load data.json:', err);
+        // Fallback: DATA remains undefined; page will show empty gracefully
+        window.DATA = { members: { pi: {}, current: [], prevPhDs: [], prevPostdocs: [] }, publications: [], research: { areas: [] } };
+    }
+    render();
+});

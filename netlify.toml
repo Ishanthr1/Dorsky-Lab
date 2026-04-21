@@ -1,0 +1,12 @@
+[build]
+  publish = "."   # static site — everything is at the repo root
+
+# Netlify Identity + Git Gateway are enabled via the Netlify dashboard;
+# this file just ensures the publish directory is correct and lets
+# Netlify's CDN serve data.json with permissive CORS so the fetch() works.
+
+[[headers]]
+  for = "/data.json"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Access-Control-Allow-Origin = "*"
